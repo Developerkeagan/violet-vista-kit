@@ -18,7 +18,7 @@ const ServicesGrid = () => {
   return (
     <div>
       <h3 className="text-sm font-bold text-foreground mb-3">Services</h3>
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid grid-cols-4 lg:grid-cols-4 gap-3">
         {services.map((service) => (
           <button
             key={service.label}
