@@ -8,11 +8,11 @@ const actions = [
 
 const QuickActions = () => {
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid grid-cols-3 gap-3 h-full">
       {actions.map((action) => (
         <button
           key={action.label}
-          className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:scale-[1.02] active:scale-95"
+          className="flex flex-col items-center justify-center gap-2 p-4 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:scale-[1.02] active:scale-95"
         >
           <div className={`p-3 rounded-xl bg-gradient-to-br ${action.color}`}>
             <action.icon className="h-5 w-5 text-primary-foreground" />
