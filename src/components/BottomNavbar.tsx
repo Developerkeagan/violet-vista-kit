@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 const tabs = [
   { icon: Home, label: "Home", id: "home" },
-  { icon: TrendingUp, label: "Finance", id: "finance" },
+  { icon: TrendingUp, label: "Social Boost", id: "social-boost" },
   { icon: Smartphone, label: "SIM", id: "sim" },
   { icon: BarChart3, label: "Analytics", id: "analytics" },
   { icon: Settings, label: "Settings", id: "settings" },
