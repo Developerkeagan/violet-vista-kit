@@ -6,6 +6,7 @@ import QuickActions from "@/components/QuickActions";
 import AdBanner from "@/components/AdBanner";
 import ServicesGrid from "@/components/ServicesGrid";
 import SocialBoostPage from "@/components/SocialBoostPage";
+import SimPage from "@/components/SimPage";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("home");
@@ -38,6 +39,12 @@ const Index = () => {
       {activeTab === "social-boost" && (
         <main>
           <SocialBoostPage />
+        </main>
+      )}
+
+      {activeTab === "sim" && (
+        <main>
+          <SimPage />
         </main>
       )}
 
