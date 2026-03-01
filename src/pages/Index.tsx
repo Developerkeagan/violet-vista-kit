@@ -7,13 +7,23 @@ import AdBanner from "@/components/AdBanner";
 import ServicesGrid from "@/components/ServicesGrid";
 import SocialBoostPage from "@/components/SocialBoostPage";
 import SimPage from "@/components/SimPage";
+import AnalyticsPage from "@/components/AnalyticsPage";
+import SettingsPage from "@/components/SettingsPage";
+import AppSidebar from "@/components/AppSidebar";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState("home");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
-      <TopNavbar />
+      <TopNavbar onMenuClick={() => setSidebarOpen(true)} />
+      <AppSidebar
+        open={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+      />
 
       {activeTab === "home" && (
         <main className="max-w-5xl mx-auto px-4 py-4 pb-28">
@@ -37,15 +47,19 @@ const Index = () => {
       )}
 
       {activeTab === "social-boost" && (
-        <main>
-          <SocialBoostPage />
-        </main>
+        <main><SocialBoostPage /></main>
       )}
 
       {activeTab === "sim" && (
-        <main>
-          <SimPage />
-        </main>
+        <main><SimPage /></main>
+      )}
+
+      {activeTab === "analytics" && (
+        <main><AnalyticsPage /></main>
+      )}
+
+      {activeTab === "settings" && (
+        <main><SettingsPage /></main>
       )}
 
       <BottomNavbar activeTab={activeTab} onTabChange={setActiveTab} />
