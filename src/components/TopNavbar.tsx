@@ -4,15 +4,10 @@ import { cn } from "@/lib/utils";
 
 interface TopNavbarProps {
   onMenuClick?: () => void;
+  onProfileClick?: () => void;
 }
 
-const apiBalances = [
-  { name: "Data API", balance: "₦6,000.00", color: "from-primary to-accent" },
-  { name: "Boosting API", balance: "₦6,000.00", color: "from-accent to-primary" },
-  { name: "Number API", balance: "₦6,000.00", color: "from-primary to-accent" },
-];
-
-const TopNavbar = ({ onMenuClick }: TopNavbarProps) => {
+const TopNavbar = ({ onMenuClick, onProfileClick }: TopNavbarProps) => {
   const [walletOpen, setWalletOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -44,27 +39,27 @@ const TopNavbar = ({ onMenuClick }: TopNavbarProps) => {
           {walletOpen && (
             <div className="absolute right-0 top-full mt-2 w-64 rounded-xl bg-card border border-border shadow-xl shadow-black/20 overflow-hidden animate-in fade-in-0 zoom-in-95 duration-200">
               <div className="p-4 space-y-3">
-                {apiBalances.map((api, i) => (
-                  <div key={api.name}>
-                    {i > 0 && <div className="h-px bg-border mb-3" />}
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">{api.name}</p>
-                        <p className="text-lg font-bold text-foreground">{api.balance}</p>
-                      </div>
-                      <button className={`flex items-center gap-1.5 h-8 px-3 rounded-lg bg-gradient-to-r ${api.color} text-primary-foreground text-xs font-semibold hover:opacity-90 transition-all`}>
-                        <ExternalLink className="h-3 w-3" />
-                        Fund
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                {/* Wallet Balance */}
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Wallet Balance</p>
+                  <p className="text-lg font-bold text-foreground">₦12,450.00</p>
+                  <button className="mt-2 flex items-center gap-1.5 h-8 px-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground text-xs font-semibold hover:opacity-90 transition-all">
+                    <ExternalLink className="h-3 w-3" />
+                    Add Funds
+                  </button>
+                </div>
+                <div className="h-px bg-border" />
+                {/* Commission Balance */}
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Commission Balance</p>
+                  <p className="text-lg font-bold text-foreground">₦320.50</p>
+                </div>
               </div>
             </div>
           )}
         </div>
 
-        <button className="p-2 rounded-lg bg-secondary hover:bg-muted transition-colors">
+        <button onClick={onProfileClick} className="p-2 rounded-lg bg-secondary hover:bg-muted transition-colors">
           <User className="h-5 w-5 text-foreground" />
         </button>
       </div>
