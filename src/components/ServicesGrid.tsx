@@ -1,20 +1,24 @@
 import {
-  Wifi, Smartphone, Heart, Hash,
+  Wifi, Smartphone, Users, Hash,
   Phone, Globe, Zap, MoreHorizontal,
 } from "lucide-react";
 
 const services = [
-  { icon: Wifi, label: "Data Bundle", badge: "Hot" },
-  { icon: Smartphone, label: "Social Boost", badge: null },
-  { icon: Phone, label: "Virtual No.", badge: "New" },
-  { icon: Globe, label: "Airtime", badge: null },
-  { icon: Heart, label: "Followers", badge: null },
-  { icon: Hash, label: "SMM Panel", badge: null },
-  { icon: Zap, label: "Instant Top", badge: null },
-  { icon: MoreHorizontal, label: "More", badge: "Soon" },
+  { icon: Wifi, label: "Data Bundle", badge: "Hot", id: "data-bundle" },
+  { icon: Smartphone, label: "Social Boost", badge: null, id: "social-boost" },
+  { icon: Phone, label: "Virtual No.", badge: "New", id: "sim" },
+  { icon: Globe, label: "Airtime", badge: null, id: "airtime" },
+  { icon: Users, label: "Refer", badge: null, id: "referral" },
+  { icon: Hash, label: "SMM Panel", badge: null, id: "social-boost" },
+  { icon: Zap, label: "Instant Top", badge: null, id: "airtime" },
+  { icon: MoreHorizontal, label: "More", badge: "Soon", id: "" },
 ];
 
-const ServicesGrid = () => {
+interface ServicesGridProps {
+  onNavigate?: (tab: string) => void;
+}
+
+const ServicesGrid = ({ onNavigate }: ServicesGridProps) => {
   return (
     <div>
       <h3 className="text-sm font-bold text-foreground mb-3">Services</h3>
@@ -22,6 +26,7 @@ const ServicesGrid = () => {
         {services.map((service) => (
           <button
             key={service.label}
+            onClick={() => service.id && onNavigate?.(service.id)}
             className="flex flex-col items-center gap-2 py-3 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 hover:scale-[1.02] active:scale-95 relative"
           >
             {service.badge && (
